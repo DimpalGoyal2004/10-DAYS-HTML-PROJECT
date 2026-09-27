@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 id="heading">To Do List</h2>
+        <div id="input-section">
+         <input type="text" placeholder="Enter New Task..." id="task-input">
+         <button id="addTask">Add</button>
+         <button id="removeTask">Clear All</button>
+         </div>
+         <ul id="taskList"></ul>
+    </div>
+    <script>
+    let taskInput = document.querySelector("#task-input")
+    let addTask = document.querySelector("#addTask")
+    let remove = document.querySelector("#removeTask")
+    let taskList = document.querySelector("#taskList")
+
+    addTask.addEventListener("click",function(){
+        let task = taskInput.value;
+        if(task === ""){
+            return;
+        }
+        let li = document.createElement("li")
+        let span =  document.createElement("span")
+        span.textContent = task
+         
+        let completed = document.createElement("button")
+        completed.textContent =  "✓";
+
+        let deleted = document.createElement("button")
+        deleted.textContent = "✕";
+
+        li.appendChild(span)
+        li.appendChild(completed)
+        li.appendChild(deleted)
+
+        li.textContent = task;
+        taskList.appendChild(li)
+        taskInput.value = "";
+    })
+
+    remove.addEventListener("click",function(){
+        taskList.remove()
+        
+    })
+    </script>
+</body>
+</html>
